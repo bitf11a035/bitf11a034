@@ -1,0 +1,69 @@
+@{
+    ViewBag.Title = "_LayoutJob";
+}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Opportunity.com</title>
+<link href="~/Content/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div id="topPan">
+	<a href="Index.cshtml"><img src="~/Images/logo.gif" title="Brain Tech" alt="Brain Tech" width="219" height="58" border="0"  class="logo"/></a>
+	
+    <div id="topimagePan"><img src="~/Images/blank.gif" alt="" /></div>
+	<ul>
+		<li class="home"><a href="/Home/Index">Home</a></li>
+		<li><a href="/Home/AboutUs">About Us</a></li>
+        <li><a href="/Job/Home">Job Management</a></li>
+        <li><a href="/Home/ContactUs">Contact Us</a></li>
+        <li><a href="/Account/Logout">Logout</a></li>
+       
+  </ul>
+</div>
+
+<div id="bodyPan">
+  	
+    @RenderBody()
+
+
+  <div id="rightPan">
+      <br />
+      <div id="rightform3Pan">
+	        <h2>Categories</h2>
+          <ul>
+           	<li><a href="/User/Admin_Jobs">Admin</a></li>
+		    <li><a href="/User/Marketing_Jobs">Marketing</a></li>
+		    <li><a href="/User/Engineering_Jobs">Engineering</a></li>
+		    <li><a href="/User/IT_Jobs">IT</a></li>
+		    <li><a href="/User/HR_Jobs">HR</a></li>
+            <li><a href="/User/Hardware_Jobs">Hardware</a></li>
+            <li><a href="/User/Accounting_Jobs">Accounting</a></li>
+            <li><a href="/User/Banking_Jobs">Banking</a></li>
+            <li><a href="/User/Finance_Jobs">Finance</a></li>
+            <li><a href="/User/Telecom_Jobs">Telecom</a></li>
+	</ul>
+
+	</div>
+      <br />
+    <div id="rightform4Pan">
+	    <h2>Top 5 jobs</h2> </div>
+	<ul>
+		<marquee direction="down">
+		<li><a href="/Home/TopJobs">Web Developer</a></li>
+		<li><a href="/Home/TopJobs">Web Content Writer</a></li>
+		<li><a href="/Home/TopJobs">SEO Expert </a></li>
+		<li><a href="/Home/TopJobs">Network Administrator </a></li>
+		<li><a href="/Home/TopJobs">HR Manager </a></li>
+            </marquee>
+	</ul>
+	
+  </div>
+</div> <!-- bodypan div end-->
+
+		
+</body>
+</html>
+

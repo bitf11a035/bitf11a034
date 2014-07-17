@@ -1,0 +1,132 @@
+@{
+    ViewBag.Title = "_LayoutPortal";
+}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Opportunity.com</title>
+<link href="~/Content/style.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/jquery.validate.js" type="text/javascript"></script>
+    <script src="~/Scripts/jquery.validate.min.js" type="text/javascript""></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js" type="text/javascript"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js" type="text/javascript"></script>
+</head>
+
+<body>
+<div id="topPan1">
+	<a href="Index.cshtml"><img src="~/Images/logo.gif" title="Brain Tech" alt="Brain Tech" width="219" height="58" border="0"  class="logo"/></a>
+	
+    <div id="topimagePan"><img src="~/Images/blank.gif" alt="" /></div>
+	<ul>
+		<li><a href="/User/Home">Home</a></li>
+		<li><a href="/Home/AboutUs">About Us</a></li>
+		<li><a href="/Home/Categories">Categories</a></li>
+        <li><a href="/Resume/ResumeManagement">Resume</a></li>
+        <li><a href="/Home/ContactUs">Contact Us</a></li>
+        <li><a href="/Account/Logout">Logout</a></li>
+       
+  </ul>
+</div>
+
+<div id="bodyPan">
+  	
+    @RenderBody()
+	@*</div>  <div id="searching"><h3>Searching...</h3></div>*@
+<div id="result"></div>
+    <br />
+  <div id="rightPan">
+      <div id="rightform2Pan">
+	<form action="/Home/Search1" method="post" class="form2">
+		<h2>Search Here</h2>
+		<p><input name="search" type="text"/></p>
+		<input type="submit"  class="search" value="SEARCH"/>
+	</form>
+
+   
+  @Scripts.Render("~/bundles/jquery")
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $('#searching').hide();
+
+            $('#b1').click(function () {
+
+                var search1 = $('#search').val();
+
+                alert('Text=' + search1);
+                $('#searching').show();
+                $.getJSON("/Home/Search?search=" + search1, function (data) {
+                    $('#searching').hide();
+                    if (data) {
+                        $('#result').text("Job Category exits.");
+                        //alert('User already exists in database.. Try another one!');
+
+                    }
+                    else {
+                        $('#result').text("Job Category doesnot exist.");
+                        //alert('User Name is available!');
+                    }
+                });
+
+            });
+
+        });
+    </script>
+      <br />
+      <div id="rightform3Pan">
+	        <h2>Categories</h2>
+          <ul>
+           	<li><a href="/User/Admin_Jobs">Admin</a></li>
+		    <li><a href="/User/Marketing_Jobs">Marketing</a></li>
+		    <li><a href="/User/Engineering_Jobs">Engineering</a></li>
+		    <li><a href="/User/IT_Jobs">IT</a></li>
+		    <li><a href="/User/HR_Jobs">HR</a></li>
+            <li><a href="/User/Hardware_Jobs">Hardware</a></li>
+            <li><a href="/User/Accounting_Jobs">Accounting</a></li>
+            <li><a href="/User/Banking_Jobs">Banking</a></li>
+            <li><a href="/User/Finance_Jobs">Finance</a></li>
+            <li><a href="/User/Telecom_Jobs">Telecom</a></li>
+	</ul>
+
+	</div>
+      <br />
+    <div id="rightform4Pan">
+	    <h2>Top 5 jobs</h2> </div>
+	<ul>
+		<marquee direction="down">
+		<li><a href="/Home/TopJobs">Web Developer</a></li>
+		<li><a href="/Home/TopJobs">Web Content Writer</a></li>
+		<li><a href="/Home/TopJobs">SEO Expert </a></li>
+		<li><a href="/Home/TopJobs">Network Administrator </a></li>
+		<li><a href="/Home/TopJobs">HR Manager </a></li>
+            </marquee>
+	</ul>
+	
+  </div>
+</div> <!-- bodypan div end-->
+<div id="bodyBottomPan">
+  <div id="BottomLeftPan">
+  	
+  </div>
+  
+  <div id="BottomMiddlePan">
+  	
+  </div>
+</div>
+<div id="footerPan">
+	<ul>
+		<li><a href="/Home/Index">Home </a>| </li>
+		<li><a href="/Home/AboutUs">About Us</a>| </li>
+		<li><a href="/Home/Categories">Categories</a>| </li>
+        <li><a href="/Resume/ResumeManagement">Resume</a>| </li>
+		<li><a href="/Home/ContactUs">Contact Us</a>| </li>
+		<li><a href="/Home/Index">Logout</a></li>
+		</ul>
+		<p class="copyright">©oportunity. all right reserved.</p>
+    </div>
+		
+</body>
+</html>

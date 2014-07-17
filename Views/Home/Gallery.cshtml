@@ -1,0 +1,147 @@
+﻿@{
+    ViewBag.Title = "Gallery";
+    Layout = "~/Views/Shared/_LayoutResume.cshtml";
+}
+
+
+@section tabs{
+    <div id="topimagePan"><img src="~/Images/blank.gif" alt="" /></div>
+	<ul>
+		<li><a href="/User/Home">Home</a></li>
+		<li><a href="/Home/AboutUs">About Us</a></li>
+		<li><a href="/Home/Gallery">Gallery</a></li>
+        <li><a href="/Resume/ResumeManagement">Resume</a></li>
+        <li><a href="/Home/ContactUs">Contact Us</a></li>
+        <li><a href="/Account/Logout">Logout</a></li>
+       
+  </ul>
+}
+@section ResumeManagement{
+   <div id="rightform3Pan">
+	        <h2>Categories</h2>
+          <ul>
+           	<li><a href="/User/Admin_Jobs">Admin</a></li>
+		    <li><a href="/User/Marketing_Jobs">Marketing</a></li>
+		    <li><a href="/User/IT_Jobs">IT</a></li>
+		    <li><a href="/User/HR_Jobs">HR</a></li>
+            <li><a href="/User/Accounting_Jobs">Accounting</a></li>
+	</ul>
+
+	</div>
+}  
+@section TopJobs{
+    <div id="rightform4Pan">
+	    <h2>Top 5 jobs</h2> </div>
+	<ul>
+		<marquee direction="down">
+		<li><a href="/Home/TopJobs">Web Developer</a></li>
+		<li><a href="/Home/TopJobs">Web Content Writer</a></li>
+		<li><a href="/Home/TopJobs">SEO Expert </a></li>
+		<li><a href="/Home/TopJobs">Network Administrator </a></li>
+		<li><a href="/Home/TopJobs">HR Manager </a></li>
+            </marquee>
+	</ul>
+	
+}
+@section search{
+     <div id="rightform2Pan">
+	<form action="/Home/Search1" method="post" class="form2">
+		<h2>Search Here</h2>
+		<p><input name="search" type="text"/></p>
+		<input type="submit"  class="search" value="SEARCH"/>
+	</form>
+
+   
+  @Scripts.Render("~/bundles/jquery")
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $('#searching').hide();
+
+            $('#b1').click(function () {
+
+                var search1 = $('#search').val();
+
+                alert('Text=' + search1);
+                $('#searching').show();
+                $.getJSON("/Home/Search?search=" + search1, function (data) {
+                    $('#searching').hide();
+                    if (data) {
+                        $('#result').text("Job Category exits.");
+                        //alert('User already exists in database.. Try another one!');
+
+                    }
+                    else {
+                        $('#result').text("Job Category doesnot exist.");
+                        //alert('User Name is available!');
+                    }
+                });
+
+            });
+
+        });
+    </script>
+
+} 
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+<link rel="stylesheet" href="~/Content/jquery.fancybox.css?v=2.1.4" type="text/css" media="screen" />
+<script type="text/javascript" src="~/Scripts/jquery.fancybox.js?v=2.1.4"></script>
+  <div id="leftPan">     
+@foreach(var x in ViewBag.X)
+{
+ 
+<a class="fancybox" href="~/Gallery/@x.ImagePath" alt="">
+      <img src="~/Gallery/@x.ImagePath" alt="" width="100" height="100"/></a>
+}
+
+ </div>    
+ @Scripts.Render("~/bundles/jquery")
+<script type='text/javascript'>
+  $(document).ready(function() {
+	/* This is basic - uses default settings */
+	$("a#single_image").fancybox();
+	
+	/* Using custom settings */
+	$("a#inline").fancybox({
+		'hideOnContentClick': true
+	});
+
+	/* Apply fancybox to multiple items */
+	$("a.group").fancybox({
+		'transitionIn'	:	'elastic',
+		'transitionOut'	:	'elastic',
+		'speedIn'		:	600, 
+		'speedOut'		:	200, 
+		'overlayShow'	:	false
+	});
+});
+</script> 
+<script>
+    // Activate fancyBox
+    $(".fancybox")
+        .attr('rel', 'gallery')
+        .fancybox({
+            padding: 0
+        });
+
+ </script>
+       <script>
+           // Launch fancyBox on first element
+           $(".fancybox").eq(0).trigger('click');
+    </script>
+
+
+@section Footer{
+    <div id="footerPan">
+	<ul>
+		<li><a href="/Home/Index">Home</a>|</li>
+		<li><a href="/Home/AboutUs">About Us</a>|</li>
+		<li><a href="/Home/Categories">Categories</a>|</li>
+        <li><a href="/Resume/ResumeManagement">Resume</a>|</li>
+        <li><a href="/Home/ContactUs">Contact Us</a>|</li>
+        <li><a href="/Home/Index">Logout</a></li>
+		</ul>
+		<p class="copyright">©oportunity. all right reserved.</p>
+    </div>
+    }

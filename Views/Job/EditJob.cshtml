@@ -1,0 +1,386 @@
+@{
+    ViewBag.Title = "EditJob";
+    Layout = "~/Views/Shared/_LayoutResume.cshtml";
+}
+@section tabs{
+     <div id="topimagePan"><img src="~/Images/blank.gif" alt="" /></div>
+	<ul>
+		<li><a href="/Job/Home">Home</a></li>
+		<li><a href="/Home/AboutUs">About Us</a></li>
+        <li><a href="/Job/Home">Job Area</a></li>
+        <li><a href="/Home/ContactUs">Contact Us</a></li>
+        <li><a href="/Account/Logout">Logout</a></li>
+       
+  </ul>
+ }  
+@section ResumeManagement{
+    <div id="rightform3Pan">
+	        <h2>Categories</h2>
+          <ul>
+           	<li><a href="/User/Admin_Jobs">Admin</a></li>
+		    <li><a href="/User/Marketing_Jobs">Marketing</a></li>
+		    <li><a href="/User/IT_Jobs">IT</a></li>
+		    <li><a href="/User/HR_Jobs">HR</a></li>
+            <li><a href="/User/Accounting_Jobs">Accounting</a></li>
+	</ul>
+
+	</div>
+}  
+@section TopJobs{
+    <div id="rightform4Pan">
+	    <h2>Top 5 jobs</h2> </div>
+	<ul>
+		<marquee direction="down">
+		<li><a href="/Home/TopJobs">Web Developer</a></li>
+		<li><a href="/Home/TopJobs">Web Content Writer</a></li>
+		<li><a href="/Home/TopJobs">SEO Expert </a></li>
+		<li><a href="/Home/TopJobs">Network Administrator </a></li>
+		<li><a href="/Home/TopJobs">HR Manager </a></li>
+            </marquee>
+	</ul>
+	
+}  
+  <div id="leftPan">
+     <div id="leftblockonePan">
+		<h2>Edit <span>Job</span></h2>  <br /><br /><br /><br /><br />
+         @model OnlineJobPortal.Models.Job
+          @using (Html.BeginForm("UpdateJob", "Job", FormMethod.Post))
+          {
+               @Html.ValidationSummary(true)
+               @Html.HiddenFor(model => model.JobID)  @* ID ka Hidden ona zarri hai *@
+               @Html.HiddenFor(model => model.CompanyID)
+               @Html.HiddenFor(model => model.CompanyName)  
+          <table border="0">
+
+          <tr><td>@Html.LabelFor(model => model.CompanyName)</td>
+              <td>@Html.DisplayFor(model => model.CompanyName)</td></tr>
+
+          <tr><td>@Html.LabelFor(model => model.JobName)</td>
+              <td>@Html.EditorFor(model => model.JobName)</td>
+              <td>@Html.ValidationMessageFor(model => model.JobName)</td></tr>
+                                
+           <tr><td>@Html.LabelFor(model => model.No_of_Vacancies)</td>
+               <td>@Html.EditorFor(model => model.No_of_Vacancies)</td>
+               <td>@Html.ValidationMessageFor(model => model.No_of_Vacancies)</td></tr>
+
+            <tr><td>@Html.LabelFor(model => model.Salary)</td>
+                <td>@Html.EditorFor(model => model.Salary)@Html.Label("PKR")</td>
+                <td>@Html.ValidationMessageFor(model => model.Salary)</td></tr>
+            
+           <tr><td>@Html.LabelFor(m => m.JobCategory)</td>
+                  <td> <select name="JobCategory">
+                  @if(ViewBag.category != null)
+                  {
+                    if(Model.JobCategory.Equals("Admin"))
+                    {
+                        <option value="Admin" selected="selected">Admin</option> 
+                        <option value="Marketing">Marketing</option> 
+                        <option value="Engineering">Engineering</option>
+                        <option value="IT">IT</option>
+                        <option value="HR">HR</option>
+                        <option value="Hardware">Hardware</option>
+                        <option value="Accounting">Accounting</option>
+                        <option value="Banking">Banking</option>
+                        <option value="Finance">Finance</option>
+                        <option value="Telecom">Telecom</option>
+                    }
+                     if (Model.JobCategory.Equals("Marketing"))
+                     {
+                        <option value="Admin" >Admin</option> 
+                        <option value="Marketing" selected="selected">Marketing</option> 
+                        <option value="Engineering">Engineering</option>
+                        <option value="IT">IT</option>
+                        <option value="HR">HR</option>
+                        <option value="Hardware">Hardware</option>
+                        <option value="Accounting">Accounting</option>
+                        <option value="Banking">Banking</option>
+                        <option value="Finance">Finance</option>
+                        <option value="Telecom">Telecom</option>
+                     }
+                    if (Model.JobCategory.Equals("Engineering"))
+                    {
+                        <option value="Admin" >Admin</option> 
+                        <option value="Marketing">Marketing</option> 
+                        <option value="Engineering" selected="selected">Engineering</option>
+                        <option value="IT">IT</option>
+                        <option value="HR">HR</option>
+                        <option value="Hardware">Hardware</option>
+                        <option value="Accounting">Accounting</option>
+                        <option value="Banking">Banking</option>
+                        <option value="Finance">Finance</option>
+                        <option value="Telecom">Telecom</option>
+                    }
+                    if (Model.JobCategory.Equals("IT"))
+                    {
+                       <option value="Admin" >Admin</option>
+                       <option value="Marketing">Marketing</option> 
+                       <option value="Engineering">Engineering</option>
+                       <option value="IT" selected="selected">IT</option>
+                       <option value="HR">HR</option>
+                       <option value="Hardware">Hardware</option>
+                        <option value="Accounting">Accounting</option>
+                        <option value="Banking">Banking</option>
+                        <option value="Finance">Finance</option>
+                        <option value="Telecom">Telecom</option>
+                    }
+                    if (Model.JobCategory.Equals("HR"))
+                    {
+                        <option value="Admin" >Admin</option> 
+                        <option value="Marketing">Marketing</option> 
+                        <option value="Engineering">Engineering</option>
+                        <option value="IT">IT</option>
+                        <option value="HR" selected="selected">HR</option>
+                        <option value="Hardware">Hardware</option>
+                        <option value="Accounting">Accounting</option>
+                        <option value="Banking">Banking</option>
+                        <option value="Finance">Finance</option>
+                        <option value="Telecom">Telecom</option>
+                    }
+                    if (Model.JobCategory.Equals("Hardware"))
+                    {
+                        <option value="Admin" >Admin</option> 
+                        <option value="Marketing">Marketing</option> 
+                        <option value="Engineering">Engineering</option>
+                        <option value="IT">IT</option>
+                        <option value="HR">HR</option>
+                        <option value="Hardware" selected="selected">Hardware</option>
+                        <option value="Accounting">Accounting</option>
+                        <option value="Banking">Banking</option>
+                        <option value="Finance">Finance</option>
+                        <option value="Telecom">Telecom</option>
+                    }
+                     if (Model.JobCategory.Equals("Accounting"))
+                     {
+                        <option value="Admin" >Admin</option> 
+                        <option value="Marketing">Marketing</option> 
+                        <option value="Engineering">Engineering</option>
+                        <option value="IT">IT</option>
+                        <option value="HR">HR</option>
+                        <option value="Hardware">Hardware</option>
+                        <option value="Accounting" selected="selected">Accounting</option>
+                        <option value="Banking">Banking</option>
+                        <option value="Finance">Finance</option>
+                        <option value="Telecom">Telecom</option>
+                     }
+                     if (Model.JobCategory.Equals("Banking"))
+                     {
+                        <option value="Admin" >Admin</option> 
+                        <option value="Marketing">Marketing</option> 
+                        <option value="Engineering">Engineering</option>
+                        <option value="IT">IT</option>
+                        <option value="HR">HR</option>
+                        <option value="Hardware">Hardware</option>
+                        <option value="Accounting">Accounting</option>
+                        <option value="Banking" selected="selected">Banking</option>
+                        <option value="Finance">Finance</option>
+                        <option value="Telecom">Telecom</option>
+                     }
+                      if (Model.JobCategory.Equals("Finance"))
+                      {
+                        <option value="Admin" >Admin</option> 
+                        <option value="Marketing">Marketing</option> 
+                        <option value="Engineering">Engineering</option>
+                        <option value="IT">IT</option>
+                        <option value="HR">HR</option>
+                        <option value="Hardware">Hardware</option>
+                        <option value="Accounting">Accounting</option>
+                        <option value="Banking">Banking</option>
+                        <option value="Finance" selected="selected">Finance</option>
+                        <option value="Telecom">Telecom</option>
+                      }
+                      if (Model.JobCategory.Equals("Telecom"))
+                      {
+                        <option value="Admin" >Admin</option> 
+                        <option value="Marketing">Marketing</option> 
+                        <option value="Engineering">Engineering</option>
+                        <option value="IT">IT</option>
+                        <option value="HR">HR</option>
+                        <option value="Hardware">Hardware</option>
+                        <option value="Accounting">Accounting</option>
+                        <option value="Banking">Banking</option>
+                        <option value="Finance">Finance</option>
+                        <option value="Telecom" selected="selected">Telecom</option>
+                      }
+                  }
+                      @if(ViewBag.category == null)
+                      {
+                        <option value="none">select Category</option>
+                        <option value="Admin">Admin</option> 
+                        <option value="Marketing">Marketing</option> 
+                        <option value="Engineering">Engineering</option>
+                        <option value="IT">IT</option>
+                        <option value="HR">HR</option>
+                        <option value="Hardware">Hardware</option>
+                        <option value="Accounting">Accounting</option>
+                        <option value="Banking">Banking</option>
+                        <option value="Finance">Finance</option>
+                        <option value="Telecom">Telecom</option>
+                      }
+               </select></td></tr>
+
+            <tr><td>@Html.LabelFor(m => m.JobType)</td>
+                <td><select name="JobType">
+                    @if(ViewBag.type == null)
+                    {
+                        <option value="none">select Type</option>
+                        <option value="FullTime">FullTime</option>
+                        <option value="PartTime">PartTime</option>
+                    }
+                    @if(ViewBag.type != null)
+                    {
+                         if (Model.JobType.Equals("FullTime"))
+                         {
+                             <option value="FullTime" selected="selected">FullTime</option>
+                             <option value="PartTime">PartTime</option>
+                         }
+                         if (Model.JobType.Equals("PartTime"))
+                          {
+                            <option value="FullTime">FullTime</option>
+                            <option value="PartTime" selected="selected">PartTime</option>
+                         }
+                    }
+             </select></td></tr>
+            
+            <tr><td>@Html.LabelFor(m => m.Shift_Timings)</td>
+                <td><select name="Shift_Timings">
+                   @if(ViewBag.shift == null)
+                   {
+                       <option value="none">select shift</option>
+                       <option value="MorningShift">MorningShift</option>
+                       <option value="AfternoonShift">AfternoonShift</option> 
+                   }
+                    @if(ViewBag.shift != null)
+                    {
+                          if (Model.Shift_Timings.Equals("MorningShift"))
+                          {
+                            <option value="MorningShift" selected="selected">MorningShift</option>
+                            <option value="AfternoonShift">AfternoonShift</option>
+                          }
+                          if (Model.Shift_Timings.Equals("AfternoonShift"))
+                          {
+                            <option value="MorningShift">MorningShift</option>
+                            <option value="AfternoonShift" selected="selected">AfternoonShift</option>
+                          }
+                    }
+                </select></td></tr>
+
+            <tr><td>@Html.LabelFor(m => m.Req_Qualification)</td><td><select name="Req_Qualification">
+                @if(ViewBag.qualifi == null)
+                {
+                     <option value="none">select Qualification</option>
+                     <option value="Matric">Matric</option>
+                     <option value="Intermediate">Intermediate</option>
+                     <option value="Graduation">Graduation</option>
+                     <option value="Masters">Masters</option>
+                     <option value="M-Phil">M-Phil</option>
+                     <option value="Phd">Phd</option>
+                }
+                @if(ViewBag.qualifi != null)
+                {
+                     if (Model.Req_Qualification.Equals("Matric"))
+                      {
+                        <option value="Matric" selected="selected">Matric</option>
+                        <option value="Intermediate">Intermediate</option>
+                        <option value="Graduation">Graduation</option>
+                       <option value="Masters">Masters</option>
+                       <option value="M-Phil">M-Phil</option>
+                       <option value="Phd">Phd</option>
+                     }
+                     if (Model.Req_Qualification.Equals("Intermediate"))
+                      {
+                        <option value="Matric">Matric</option>
+                        <option value="Intermediate" selected="selected">Intermediate</option>
+                        <option value="Graduation">Graduation</option>
+                       <option value="Masters">Masters</option>
+                       <option value="M-Phil">M-Phil</option>
+                       <option value="Phd">Phd</option>
+                     }
+                     if (Model.Req_Qualification.Equals("Graduation"))
+                      {
+                        <option value="Matric">Matric</option>
+                        <option value="Intermediate">Intermediate</option>
+                        <option value="Graduation" selected="selected">Graduation</option>
+                       <option value="Masters">Masters</option>
+                       <option value="M-Phil">M-Phil</option>
+                       <option value="Phd">Phd</option>
+                     }
+                     if (Model.Req_Qualification.Equals("Masters"))
+                      {
+                        <option value="Matric">Matric</option>
+                        <option value="Intermediate">Intermediate</option>
+                        <option value="Graduation">Graduation</option>
+                       <option value="Masters" selected="selected">Masters</option>
+                       <option value="M-Phil">M-Phil</option>
+                       <option value="Phd">Phd</option>
+                     }
+                     if (Model.Req_Qualification.Equals("M-Phil"))
+                      {
+                        <option value="Matric">Matric</option>
+                        <option value="Intermediate">Intermediate</option>
+                        <option value="Graduation">Graduation</option>
+                       <option value="Masters">Masters</option>
+                       <option value="M-Phil" selected="selected">M-Phil</option>
+                       <option value="Phd">Phd</option>
+                     }
+                     if (Model.Req_Qualification.Equals("Phd"))
+                      {
+                        <option value="Matric">Matric</option>
+                        <option value="Intermediate">Intermediate</option>
+                        <option value="Graduation">Graduation</option>
+                       <option value="Masters">Masters</option>
+                       <option value="M-Phil">M-Phil</option>
+                       <option value="Phd" selected="selected">Phd</option>
+                     }
+                }
+            </select></td></tr>               
+            
+            <tr><td>@Html.LabelFor(m => m.Req_Experience)</td>
+                <td><select name="Req_Experience">
+                    @if(ViewBag.experi == null )
+                    {
+                         <option value="none">select option</option>
+                         <option value="Experience">Experience</option>
+                         <option value="NoExperience" >NoExperience</option>
+                    }
+                     @if(ViewBag.experi != null )
+                     {
+                        if (Model.Req_Experience.Equals("Experience"))
+                          {
+                            <option value="Experience" selected="selected">Experience</option>
+                            <option value="NoExperience" >NoExperience</option>
+                        }
+                        if (Model.Req_Experience.Equals("NoExperience"))
+                          {
+                            <option value="Experience">Experience</option>
+                            <option value="NoExperience" selected="selected">NoExperience</option>
+                        }
+                     }
+                </select></td></tr> 
+                        
+            <tr><td>@Html.LabelFor(model => model.JobDescription)</td>
+                <td>@Html.TextAreaFor(model => model.JobDescription)</td></tr>
+
+            <tr><td>@Html.LabelFor(model => model.Req_Skills)</td>
+                <td>@Html.TextAreaFor(model => model.Req_Skills)</td></tr>       
+                    </table>
+         <p style="text-align:right;"><input type="submit" value="Update"/></p><p></p>
+		
+          }
+
+    </div>
+   
+   <div id="leftblocktwoPan">   
+  </div>
+  </div>
+ @section Footer{
+    <div id="footerPan">
+	<ul>
+		<li><a href="/Home/Index">Home </a>| </li>
+		<li><a href="/Home/AboutUs">About Us</a>| </li>
+		<li><a href="/Job/Home">Job Area</a>| </li>
+		<li><a href="/Home/ContactUs">Contact Us</a>| </li>
+		<li><a href="/Home/Index">Logout</a></li>
+		</ul>
+		<p class="copyright">©Opportunity. all right reserved.</p>
+    </div>
+}

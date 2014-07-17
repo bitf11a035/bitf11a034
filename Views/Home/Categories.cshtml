@@ -1,0 +1,122 @@
+@{
+    ViewBag.Title = "Categories";
+    Layout = "~/Views/Shared/_LayoutResume.cshtml";
+}
+@section tabs{
+    <div id="topimagePan"><img src="~/Images/blank.gif" alt="" /></div>
+	<ul>
+		<li><a href="/User/Home">Home</a></li>
+		<li><a href="/Home/AboutUs">About Us</a></li>
+		<li><a href="/Home/Categories">Categories</a></li>
+        <li><a href="/Resume/ResumeManagement">Resume</a></li>
+        <li><a href="/Home/ContactUs">Contact Us</a></li>
+        <li><a href="/Account/Logout">Logout</a></li>
+       
+  </ul>
+}
+@section ResumeManagement{
+    <div id="rightform3Pan">
+	        <h2>Categories</h2>
+          <ul>
+           	<li><a href="/User/Admin_Jobs">Admin</a></li>
+		    <li><a href="/User/Marketing_Jobs">Marketing</a></li>
+		    <li><a href="/User/IT_Jobs">IT</a></li>
+		    <li><a href="/User/HR_Jobs">HR</a></li>
+            <li><a href="/User/Accounting_Jobs">Accounting</a></li>
+	</ul>
+
+	</div>
+}  
+@section TopJobs{
+    <div id="rightform4Pan">
+	    <h2>Top 5 jobs</h2> </div>
+	<ul>
+		<marquee direction="down">
+		<li><a href="/Home/TopJobs">Web Developer</a></li>
+		<li><a href="/Home/TopJobs">Web Content Writer</a></li>
+		<li><a href="/Home/TopJobs">SEO Expert </a></li>
+		<li><a href="/Home/TopJobs">Network Administrator </a></li>
+		<li><a href="/Home/TopJobs">HR Manager </a></li>
+            </marquee>
+	</ul>
+	
+}
+@section search{
+     @*<div id="rightform2Pan">
+	<form action="/Home/Search1" method="post" class="form2">
+		<h2>Search Here</h2>
+		<p><input name="search" type="text"/></p>
+		<input type="submit"  class="search" value="SEARCH"/>
+	</form>*@
+     <div id="rightform2Pan">
+	<form action="/Home/Search" method="post" class="form2">
+		<h2>Search Here</h2>
+		<p><input name="search" type="text" id="search"/></p>
+		<input name="search" type="button"  class="search" id="b1" value="SEARCH"/>
+	</form>
+
+   
+  @Scripts.Render("~/bundles/jquery")
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('#b1').click(function () {
+
+                var search1 = $('#search').val();
+
+                alert('Text=' + search1);
+                $.getJSON("/Home/Search?search=" + search1, function (data) {
+                    //console.log("I am in JSON");
+                       alert("I am in JSON")
+                        $('#result1').html('Search list: ' + "<br/>");
+                        $.each(data, function (i, item) {
+                            alert(item.JobName)
+                            $('#result1').append("<br/>" + "JobName: " + item.JobName);
+                        });
+
+                   
+                });
+
+            });
+
+        });
+    </script>
+
+} 
+
+  <div id="leftPan">
+  	    <!--<h3>@ViewBag.userid</h3>
+        <h3>@ViewBag.email</h3>-->
+    <div id="leftblockonePan">
+		<h2>Categ<span>ories</span></h2><br />
+		<p><img src="~/Images/Accounting.jpg" title="accounting" alt="" width="100" height="58" border="0"/><h4><a href="/User/Accounting_Jobs">Accounting</a></h4></p>
+         <p><img src="~/Images/Admin.gif" title="admin" alt="" width="100" height="58" border="0"/><h4><a href="/User/Admin_Jobs">Admin</a></h4></p>
+         <p><img src="~/Images/Marketing.jpg" title="marketing" alt="" width="100" height="58" border="0"/><h4><a href="/User/Marketing_Jobs">Marketing</a></h4></p>
+         
+        
+     
+   </div>
+   
+    <div id="leftblockonePan1">    
+        <br />  <br />  <br /> <br />   
+        <p><img src="~/Images/HRes.gif" title="HR" alt="" width="100" height="58" border="0"/><h4><a href="/User/HR_Jobs">HR</a></h4></p>
+        <p><img src="~/Images/IT.jpg" title="IT" alt="" width="100" height="58" border="0"/><h4><a href="/User/IT_Jobs">IT</a></h4></p>
+
+    </div> 
+      <div id="leftblocktwoPan">   
+  </div>
+  </div>
+        <div id="result1"> </div> 
+   @section Footer{
+    <div id="footerPan">
+	<ul>
+		<li><a href="/Home/Index">Home</a>|</li>
+		<li><a href="/Home/AboutUs">About Us</a>|</li>
+		<li><a href="/Home/Categories">Categories</a>|</li>
+        <li><a href="/Resume/ResumeManagement">Resume</a>|</li>
+        <li><a href="/Home/ContactUs">Contact Us</a>|</li>
+        <li><a href="/Account/Logout">Logout</a></li>
+		</ul>
+		<p class="copyright">©oportunity. all right reserved.</p>
+    </div>
+    }

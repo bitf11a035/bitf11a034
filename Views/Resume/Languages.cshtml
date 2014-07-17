@@ -1,0 +1,145 @@
+﻿@{
+    ViewBag.Title = "Languages";
+    Layout = "~/Views/Shared/_LayoutResume.cshtml";
+}
+@section tabs{
+    <div id="topimagePan"><img src="~/Images/blank.gif" alt="" /></div>
+	<ul>
+		<li><a href="/User/Home">Home</a></li>
+		<li><a href="/Home/AboutUs">About Us</a></li>
+		<li><a href="/Home/Gallery">Gallery</a></li>
+        <li><a href="/Resume/ResumeManagement">Resume</a></li>
+        <li><a href="/Home/ContactUs">Contact Us</a></li>
+        <li><a href="/Account/Logout">Logout</a></li>
+       
+  </ul>
+}
+@section ResumeManagement{
+    <div id="rightform3Pan">
+	        <h2>Resume Management</h2>
+          <ul>
+           	<li><a href="/Resume/PersonalInformation">Personal Information</a></li>
+		    <li><a href="/Resume/Academics">Academics</a></li>
+		    <li><a href="/Resume/Experiences">Experiences</a></li>
+		    <li><a href="/Resume/Projects">Projects</a></li>
+		    <li><a href="/Resume/Languages">Languages</a></li>
+            <li><a href="/Resume/Skills">Skills</a></li>
+            <li><a href="/Resume/References">References</a></li>
+            <li><a href="/Resume/Honours">Honours and Awards</a></li>
+            <li><a href="/Resume/TargetJobs">Target Jobs</a></li>
+	</ul>
+
+	</div>
+}
+
+    @model OnlineJobPortal.Models.Language
+
+    <div id="leftPan">
+        <h2>Lang<span>uages</span></h2>
+        @using (Html.BeginForm("UpdateLanguage", "Resume", FormMethod.Post))
+        {
+                   @Html.ValidationSummary(true)
+                  <br /><br /><br /><br /><br />
+                     @Html.HiddenFor(model => model.LanguageID)
+                     @Html.HiddenFor(model => model.UserID)
+           <table border="0">
+
+                  <tr><td>@Html.LabelFor(model => model.Language1)</td>
+                 <td><select name="Language1">
+                @if (ViewBag.Language1 == null)
+                {
+                   <option >please select</option>
+                   <option value="English">English</option>
+                   <option value="Urdu">Urdu</option>
+                   <option value="Hindi">Hindi</option>
+                   <option value="Arabic">Arabic</option>
+                }
+                @if (ViewBag.Language1 != null)
+                {
+                       if (Model.Language1.Equals("English"))
+                       {
+                          <option value="English" selected="selected">English</option>
+                            <option value="Urdu">Urdu</option>
+                            <option value="Hindi">Hindi</option>
+                            <option value="Arabic">Arabic</option>
+                       }
+                       if (Model.Language1.Equals("Urdu"))
+                       {
+                            <option value="English">English</option>
+                            <option value="Urdu" selected="selected">Urdu</option>
+                            <option value="Hindi">Hindi</option>
+                            <option value="Arabic">Arabic</option>
+                       }
+                       if (Model.Language1.Equals("Hindi"))
+                       {
+                            <option value="English">English</option>
+                            <option value="Urdu">Urdu</option>
+                            <option value="Hindi" selected="selected">Hindi</option>
+                            <option value="Arabic">Arabic</option>
+                       }
+                       if (Model.Language1.Equals("Arabic"))
+                       {
+                            <option value="English">English</option>
+                            <option value="Urdu">Urdu</option>
+                            <option value="Hindi">Hindi</option>
+                            <option value="Arabic" selected="selected">Arabic</option>
+                       }
+                       if (Model.Language1.Equals("none"))
+                       {
+                            <option >please select</option>
+                            <option value="English">English</option>
+                            <option value="Urdu">Urdu</option>
+                            <option value="Hindi">Hindi</option>
+                            <option value="Arabic">Arabic</option>
+                       }
+                }
+            
+          </select></td></tr>
+                <tr>
+                   <td>@Html.LabelFor(model => model.ProficiencyLevel)</td>
+                   <td><select name="ProficiencyLevel" id="ProficiencyLevel">
+               @if (ViewBag.ProficiencyLevel == null)
+               {
+                   <option >please select</option>
+                   <option value="Basic">Basic</option>
+                   <option value="Conversational">Conversational</option>
+                   <option value="Fluent">Fluent</option>
+               }
+               @if (ViewBag.ProficiencyLevel != null)
+               {
+                   if (Model.ProficiencyLevel.Equals("Basic"))
+                   {
+                       <option value="Basic" selected="selected">Basic</option>
+                       <option value="Conversational">Conversational</option>
+                       <option value="Fluent">Fluent</option>
+                   }
+                   if (Model.ProficiencyLevel.Equals("Conversational"))
+                   {
+                       <option value="Basic">Basic</option>
+                       <option value="Conversational" selected="selected">Conversational</option>
+                       <option value="Fluent">Fluent</option>
+                   }
+                   if (Model.ProficiencyLevel.Equals("Fluent"))
+                   {
+                       <option value="Basic">Basic</option>
+                       <option value="Conversational">Conversational</option>
+                       <option value="Fluent" selected="selected">Fluent</option>
+                   }
+                   if (Model.ProficiencyLevel.Equals("none"))
+                   {
+                        <option >please select</option>
+                       <option value="Basic">Basic</option>
+                       <option value="Conversational">Conversational</option>
+                       <option value="Fluent">Fluent</option>
+                   }
+               }
+          </select></td></tr>
+
+               
+
+                    </table>
+                   <p>
+                         <input type="submit" value="Next" />
+                    </p>
+                }
+    </div>

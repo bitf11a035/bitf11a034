@@ -1,0 +1,74 @@
+﻿@{
+    ViewBag.Title = "SeekEmployees";
+    Layout = "~/Views/Shared/_LayoutResume.cshtml";
+}
+@section tabs{
+     <div id="topimagePan"><img src="~/Images/blank.gif" alt="" /></div>
+	<ul>
+		<li><a href="/Job/Home">Home</a></li>
+		<li><a href="/Home/AboutUs">About Us</a></li>
+        <li><a href="/Job/Home">Job Area</a></li>
+        <li><a href="/Home/ContactUs">Contact Us</a></li>
+        <li><a href="/Account/Logout">Logout</a></li>
+       
+  </ul>
+ }  
+@section ResumeManagement{
+    <div id="rightform3Pan">
+	        <h2>Categories</h2>
+          <ul>
+           	<li><a href="/User/Admin_Jobs">Admin</a></li>
+		    <li><a href="/User/Marketing_Jobs">Marketing</a></li>
+		    <li><a href="/User/IT_Jobs">IT</a></li>
+		    <li><a href="/User/HR_Jobs">HR</a></li>
+            <li><a href="/User/Accounting_Jobs">Accounting</a></li>
+	</ul>
+
+	</div>
+}  
+@section TopJobs{
+    <div id="rightform4Pan">
+	    <h2>Top 5 jobs</h2> </div>
+	<ul>
+		<marquee direction="down">
+		<li><a href="/Home/TopJobs">Web Developer</a></li>
+		<li><a href="/Home/TopJobs">Web Content Writer</a></li>
+		<li><a href="/Home/TopJobs">SEO Expert </a></li>
+		<li><a href="/Home/TopJobs">Network Administrator </a></li>
+		<li><a href="/Home/TopJobs">HR Manager </a></li>
+            </marquee>
+	</ul>
+	
+}  
+
+@model IEnumerable<OnlineJobPortal.Models.ViewModel>
+<div id="leftPan">
+             <h2>Job <span>Seekers</span></h2><br /><br /><br />
+      <div id="leftblockonePan">
+   <form action="/Job/selected" method="post">
+	   <table>
+        <tr><td>Applicant Name</td><td>Job Name</td><td>Company Name</td><td>Selected</td></tr>
+    @foreach (var item in Model)
+    {
+        <tr><td>@Html.DisplayFor(model=>item.User.Name)</td><td>@Html.DisplayFor(model=>item.Job.JobName)</td>
+            <td>@Html.DisplayFor(model=>item.Job.CompanyName)</td><td><input type="checkbox" id="@item.ApplyforJob.ApplyID" name="selectedEmp" value="@item.ApplyforJob.ApplyID"/></td></tr>
+        
+    }
+        </table>
+       <p><input type="submit" value="Submit" /></p>
+       </form>
+</div>
+      </div>
+   
+@section Footer{
+    <div id="footerPan">
+	<ul>
+		<li><a href="/Home/Index">Home </a>| </li>
+		<li><a href="/Home/AboutUs">About Us</a>| </li>
+		<li><a href="/Job/Home">Job Area</a>| </li>
+		<li><a href="/Home/ContactUs">Contact Us</a>| </li>
+		<li><a href="/Home/Index">Logout</a></li>
+		</ul>
+		<p class="copyright">©Opportunity. all right reserved.</p>
+    </div>
+}

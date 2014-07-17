@@ -1,0 +1,69 @@
+@{
+    ViewBag.Title = "DeleteJob";
+    Layout = "~/Views/Shared/_LayoutResume.cshtml";
+}
+@section tabs{
+     <div id="topimagePan"><img src="~/Images/blank.gif" alt="" /></div>
+	<ul>
+		<li><a href="/Job/Home">Home</a></li>
+		<li><a href="/Home/AboutUs">About Us</a></li>
+        <li><a href="/Job/Home">Job Area</a></li>
+        <li><a href="/Home/ContactUs">Contact Us</a></li>
+        <li><a href="/Account/Logout">Logout</a></li>
+       
+  </ul>
+ }  
+@section ResumeManagement{
+   <div id="rightform3Pan">
+	        <h2>Categories</h2>
+          <ul>
+           	<li><a href="/User/Admin_Jobs">Admin</a></li>
+		    <li><a href="/User/Marketing_Jobs">Marketing</a></li>
+		    <li><a href="/User/IT_Jobs">IT</a></li>
+		    <li><a href="/User/HR_Jobs">HR</a></li>
+            <li><a href="/User/Accounting_Jobs">Accounting</a></li>
+	</ul>
+
+	</div>
+}  
+@section TopJobs{
+    <div id="rightform4Pan">
+	    <h2>Top 5 jobs</h2> </div>
+	<ul>
+		<marquee direction="down">
+		<li><a href="/Home/TopJobs">Web Developer</a></li>
+		<li><a href="/Home/TopJobs">Web Content Writer</a></li>
+		<li><a href="/Home/TopJobs">SEO Expert </a></li>
+		<li><a href="/Home/TopJobs">Network Administrator </a></li>
+		<li><a href="/Home/TopJobs">HR Manager </a></li>
+            </marquee>
+	</ul>
+	
+}  
+  @model OnlineJobPortal.Models.Job
+
+  <div id="leftPan">
+     <br />
+      <br />
+      <br />
+      <table border="1">
+          <tr><td>@Html.DisplayNameFor(model => model.JobName)</td><td>@Html.DisplayNameFor(model => model.JobCategory)</td><td>@Html.DisplayNameFor(model => model.CompanyName)</td></tr>
+          @foreach (var job in ViewBag.jobsData)
+          {
+              <tr><td>@job.JobName</td><td>@job.JobCategory</td><td>@job.CompanyName</td><td>@Html.ActionLink("Delete", "DeleteJob1", new { id=@job.JobID })</td></tr>
+          }
+      </table>
+  
+  </div>
+  @section Footer{
+    <div id="footerPan">
+	<ul>
+		<li><a href="/Home/Index">Home </a>| </li>
+		<li><a href="/Home/AboutUs">About Us</a>| </li>
+		<li><a href="/Job/Home">Job Area</a>| </li>
+		<li><a href="/Home/ContactUs">Contact Us</a>| </li>
+		<li><a href="/Home/Index">Logout</a></li>
+		</ul>
+		<p class="copyright">©Opportunity. all right reserved.</p>
+    </div>
+}

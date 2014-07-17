@@ -1,0 +1,168 @@
+﻿@{
+    ViewBag.Title = "View Resume";
+    Layout = "~/Views/Shared/_LayoutResume.cshtml";
+}
+@section tabs{
+    <div id="topimagePan"><img src="~/Images/blank.gif" alt="" /></div>
+	<ul>
+		<li><a href="/User/Home">Home</a></li>
+		<li><a href="/Home/AboutUs">About Us</a></li>
+		<li><a href="/Home/Gallery">Gallery</a></li>
+        <li><a href="/Resume/ResumeManagement">Resume</a></li>
+        <li><a href="/Home/ContactUs">Contact Us</a></li>
+        <li><a href="/Account/Logout">Logout</a></li>
+       
+  </ul>
+}
+@section ResumeManagement{
+    <div id="rightform3Pan">
+	        <h2>Resume Management</h2>
+          <ul>
+           	<li><a href="/Resume/PersonalInformation">Personal Information</a></li>
+		    <li><a href="/Resume/Academics">Academics</a></li>
+		    <li><a href="/Resume/Experiences">Experiences</a></li>
+		    <li><a href="/Resume/Projects">Projects</a></li>
+		    <li><a href="/Resume/Languages">Languages</a></li>
+            <li><a href="/Resume/Skills">Skills</a></li>
+            <li><a href="/Resume/References">References</a></li>
+            <li><a href="/Resume/Honours">Honours and Awards</a></li>
+            <li><a href="/Resume/TargetJobs">Target Jobs</a></li>
+	</ul>
+
+	</div>
+}
+
+
+  <div id="leftPan">
+     <h2>Your <span>Resume</span></h2><br />
+          <h4>Personal Information</h4><br />
+      <table border="0">
+         @foreach (var info in ViewBag.InfoData)
+          {
+              <tr><td><img src="~/Gallery/@info.ProfilePicture" alt="" height="100" width="100"/></td></tr>
+              <tr><td><label>Name: </label></td><td>@info.Name</td></tr>
+              <tr><td><label>Father Name: </label></td><td>@info.FatherName</td></tr>
+              <tr><td><label>CNIC: </label></td><td>@info.CNIC</td></tr>
+              <tr><td><label>Gender: </label></td><td>@info.Gender</td></tr>
+              <tr><td><label>Martial Status: </label></td><td>@info.Martial_Status</td></tr>
+              <tr><td><label>Date of Birth: </label></td><td>@info.DOB</td></tr>
+              <tr><td><label>Email Address: </label></td><td>@info.EmailAddress</td></tr>
+              <tr><td><label>Phone No: </label></td><td>@info.Phoneno</td></tr>
+              <tr><td><label>Address: </label></td><td>@info.Address</td></tr>
+              <tr><td><label>Country: </label></td><td>@info.Country</td></tr>
+              <tr><td><label>City: </label></td><td>@info.City</td></tr>
+              <tr><td><label>Industry: </label></td><td>@info.Industry</td></tr>
+             
+          }
+         
+      </table>
+      <br /><h4> Academics </h4><br />
+      <table border="0">
+         @foreach (var info in ViewBag.AcdmyData)
+          {
+              <tr><td><label>Degree Level: </label></td><td>@info.Degree_Level</td></tr>
+              <tr><td><label>Degree Title: </label></td><td>@info.Degree_Title</td></tr>
+              <tr><td><label>Completition Date: </label></td><td>@info.Completition_Date</td></tr>
+              <tr><td><label>CGPA: </label></td><td>@info.CGPA</td></tr>
+              <tr><td><label>Institution: </label></td><td>@info.Institution</td></tr>
+              <tr><td><label>City: </label></td><td>@info.City</td></tr>
+              <tr><td><label>Province: </label></td><td>@info.Province</td></tr>
+              <tr><td><label>Country: </label></td><td>@info.Country</td></tr>
+             
+             
+          }
+         
+    
+       </table>
+      <br /><h4> Experiences </h4><br />
+      <table border="0">
+         @foreach (var info in ViewBag.Experiences)
+          {
+              <tr><td><label>Job Title: </label></td><td>@info.Job_Title</td></tr>
+              <tr><td><label>Organisation: </label></td><td>@info.Organisation</td></tr>
+              <tr><td><label>City: </label></td><td>@info.City</td></tr>
+              <tr><td><label>Country: </label></td><td>@info.Country</td></tr>
+              <tr><td><label>Start Date: </label></td><td>@info.Start_Date</td></tr>
+              <tr><td><label>End Date: </label></td><td>@info.End_Date</td></tr>
+             
+             
+          }
+         
+      </table>
+   
+      <br /><h4> Honours </h4><br />
+      <table border="0">
+         @foreach (var info in ViewBag.Honours)
+          {
+              <tr><td><label>Honour Type: </label></td><td>@info.Type</td></tr>
+              <tr><td><label>Award Title: </label></td><td>@info.Award_Title</td></tr>
+              <tr><td><label>City: </label></td><td>@info.City</td></tr>
+              <tr><td><label>Country: </label></td><td>@info.Country</td></tr>
+              <tr><td><label>Province: </label></td><td>@info.Province</td></tr>
+              <tr><td><label>Date: </label></td><td>@info.Date</td></tr>
+             
+             
+          }
+         
+      </table>
+      <br /><h4> Languages </h4><br />
+      <table border="0">
+         @foreach (var info in ViewBag.lang)
+          {
+              <tr><td><label>Language: </label></td><td>@info.Language1</td></tr>
+              <tr><td><label>Proficiency Level: </label></td><td>@info.ProficiencyLevel</td></tr>
+
+          }
+         
+      </table>
+        <br /><h4> Projects </h4><br />
+      <table border="0">
+         @foreach (var info in ViewBag.Projects)
+          {
+              <tr><td><label>Project Type: </label></td><td>@info.ProjectType</td></tr>
+              <tr><td><label>Project Title: </label></td><td>@info.ProjectTitle</td></tr>
+              <tr><td><label>Position: </label></td><td>@info.Position</td></tr>
+              <tr><td><label>Country: </label></td><td>@info.Country</td></tr>
+              <tr><td><label>City: </label></td><td>@info.City</td></tr>
+              <tr><td><label>Province: </label></td><td>@info.Province</td></tr>
+              <tr><td><label>Start Date: </label></td><td>@info.Start_Date</td></tr>
+              <tr><td><label>End Date: </label></td><td>@info.End_Date</td></tr>
+             
+             
+          }
+         </table>
+       <br /><h4> References </h4><br />
+       <table border="0">
+         @foreach (var info in ViewBag.References)
+          {
+              <tr><td><label>Name: </label></td><td>@info.Name</td></tr>
+              <tr><td><label>Job Title: </label></td><td>@info.JobTitle</td></tr>
+              <tr><td><label>Organisation: </label></td><td>@info.Organisation</td></tr>
+              <tr><td><label>EmailAddress: </label></td><td>@info.EmailAddress</td></tr>
+              <tr><td><label>Phoneno: </label></td><td>@info.Phoneno</td></tr>
+              <tr><td><label>Country: </label></td><td>@info.Country</td></tr>
+              <tr><td><label>City: </label></td><td>@info.City</td></tr>
+              <tr><td><label>Province: </label></td><td>@info.Province</td></tr>
+              <tr><td><label>Reference Type: </label></td><td>@info.ReferenceType</td></tr>
+             
+             
+          }
+         </table>
+      <br /><h4> Skills </h4><br />
+       <table border="0">
+         @foreach (var info in ViewBag.Skills)
+          {
+              <tr><td><label>Skill: </label></td><td>@info.Skill1</td></tr>
+              <tr><td><label>Last Used: </label></td><td>@info.LastUsed</td></tr>
+              <tr><td><label>Skill Level: </label></td><td>@info.Level</td></tr>
+              <tr><td><label>Experience: </label></td><td>@info.Experience</td></tr>
+          }
+         </table>
+      <br /><h4> Target Job </h4><br />
+      <table border="0">
+         @foreach (var info in ViewBag.TargetJob)
+          {
+              <tr><td><label>Job Title: </label></td><td>@info.JobTitle</td></tr>
+          }
+         </table>
+  </div>

@@ -1,0 +1,178 @@
+﻿@{
+    ViewBag.Title = "Skills";
+    Layout = "~/Views/Shared/_LayoutResume.cshtml";
+}
+@section tabs{
+    <div id="topimagePan"><img src="~/Images/blank.gif" alt="" /></div>
+	<ul>
+		<li><a href="/User/Home">Home</a></li>
+		<li><a href="/Home/AboutUs">About Us</a></li>
+		<li><a href="/Home/Gallery">Gallery</a></li>
+        <li><a href="/Resume/ResumeManagement">Resume</a></li>
+        <li><a href="/Home/ContactUs">Contact Us</a></li>
+        <li><a href="/Account/Logout">Logout</a></li>
+       
+  </ul>
+}
+@section ResumeManagement{
+    <div id="rightform3Pan">
+	        <h2>Resume Management</h2>
+          <ul>
+           	<li><a href="/Resume/PersonalInformation">Personal Information</a></li>
+		    <li><a href="/Resume/Academics">Academics</a></li>
+		    <li><a href="/Resume/Experiences">Experiences</a></li>
+		    <li><a href="/Resume/Projects">Projects</a></li>
+		    <li><a href="/Resume/Languages">Languages</a></li>
+            <li><a href="/Resume/Skills">Skills</a></li>
+            <li><a href="/Resume/References">References</a></li>
+            <li><a href="/Resume/Honours">Honours and Awards</a></li>
+            <li><a href="/Resume/TargetJobs">Target Jobs</a></li>
+	</ul>
+
+	</div>
+}
+
+@model OnlineJobPortal.Models.Skill
+
+    <div id="leftPan">
+        <h2>Skil<span>ls</span></h2>
+        @using (Html.BeginForm("UpdateSkill", "Resume", FormMethod.Post))
+        {
+                   @Html.ValidationSummary(true)
+                  <br /><br /><br /><br /><br />
+                     @Html.HiddenFor(model => model.Skill_ID)
+                     @Html.HiddenFor(model => model.UserID)
+           <table border="0">
+
+                  <tr><td>@Html.LabelFor(model => model.Skill1)</td>
+                      <td>@Html.EditorFor(model => model.Skill1)</td>
+                      <td>@Html.ValidationMessageFor(model => model.Skill1)</td></tr>
+
+                  <tr><td>@Html.LabelFor(model => model.LastUsed)</td>
+                 <td><select name="LastUsed">
+                @if (ViewBag.LastUsed == null)
+                {
+                   <option >please select</option>
+                   <option value="Never">Never</option>
+                   <option value="Currently Used">Currently Used</option>
+                   <option value="1 Year Ago">1 Year Ago</option>
+                   <option value="2+ Years Ago">2+ Years Ago</option>
+                }
+                @if (ViewBag.LastUsed != null)
+                {
+                    if (Model.LastUsed.Equals("Never"))
+                       {
+                            <option value="Never" selected="selected">Never</option>
+                           <option value="Currently Used">Currently Used</option>
+                           <option value="1 Year Ago">1 Year Ago</option>
+                           <option value="2+ Years Ago">2+ Years Ago</option>
+                       }
+                    if (Model.LastUsed.Equals("Currently Used"))
+                       {
+                            <option value="Never">Never</option>
+                           <option value="Currently Used" selected="selected">Currently Used</option>
+                           <option value="1 Year Ago">1 Year Ago</option>
+                           <option value="2+ Years Ago">2+ Years Ago</option>
+                       }
+                    if (Model.LastUsed.Equals("1 Year Ago"))
+                       {
+                            <option value="Never">Never</option>
+                           <option value="Currently Used">Currently Used</option>
+                           <option value="1 Year Ago" selected="selected">1 Year Ago</option>
+                           <option value="2+ Years Ago">2+ Years Ago</option>
+                       }
+                    if (Model.LastUsed.Equals("2+ Years Ago"))
+                       {
+                            <option value="Never">Never</option>
+                           <option value="Currently Used">Currently Used</option>
+                           <option value="1 Year Ago">1 Year Ago</option>
+                           <option value="2+ Years Ago" selected="selected">2+ Years Ago</option>
+                       }
+                    if (Model.LastUsed.Equals("none"))
+                       {
+                            <option >please select</option>
+                           <option value="Never">Never</option>
+                           <option value="Currently Used">Currently Used</option>
+                           <option value="1 Year Ago">1 Year Ago</option>
+                           <option value="2+ Years Ago">2+ Years Ago</option>
+                       }
+                }
+            
+          </select></td></tr>
+                <tr>
+                   <td>@Html.LabelFor(model => model.Level)</td>
+                   <td><select name="Level">
+               @if (ViewBag.Level == null)
+               {
+                   <option >please select</option>
+                   <option value="Beginner">Beginner</option>
+                   <option value="Intermediate">Intermediate</option>
+                   <option value="Expert">Expert</option>
+               }
+               @if (ViewBag.Level != null)
+               {
+                   if (Model.Level.Equals("Beginner"))
+                   {
+                       <option value="Beginner" selected="selected">Beginner</option>
+                       <option value="Intermediate">Intermediate</option>
+                       <option value="Expert">Expert</option>
+                   }
+                   if (Model.Level.Equals("Intermediate"))
+                   {
+                        <option value="Beginner">Beginner</option>
+                       <option value="Intermediate" selected="selected">Intermediate</option>
+                       <option value="Expert">Expert</option>
+                   }
+                   if (Model.Level.Equals("Expert"))
+                   {
+                        <option value="Beginner">Beginner</option>
+                        <option value="Intermediate">Intermediate</option>
+                        <option value="Expert" selected="selected">Expert</option>
+                   }
+                   if (Model.Level.Equals("none"))
+                   {
+                         <option >please select</option>
+                        <option value="Beginner">Beginner</option>
+                        <option value="Intermediate">Intermediate</option>
+                        <option value="Expert">Expert</option>
+                   }
+               }
+          </select></td></tr>
+
+                   <tr>
+                       <td> @Html.LabelFor(model => model.Experience)</td>
+                       <td>
+                           <select name="Experience">
+                       @if (ViewBag.Experience == null)
+                       {
+                           <option value="none">select option</option>
+                           <option value="Experience">Experience</option>
+                           <option value="NoExperience">NoExperience</option>
+                       }
+                       @if (ViewBag.Experience != null)
+                       {
+                           if (Model.Experience.Equals("Experience"))
+                           {
+                               <option value="Experience" selected="selected">Experience</option>
+                               <option value="NoExperience">NoExperience</option>
+                           }
+                           if (Model.Experience.Equals("NoExperience"))
+                           {
+                               <option value="Experience">Experience</option>
+                               <option value="NoExperience" selected="selected">NoExperience</option>
+                           }
+                           if (Model.Experience.Equals("none"))
+                           {
+                                   <option value="none">select option</option>
+                                   <option value="Experience">Experience</option>
+                                   <option value="NoExperience">NoExperience</option>
+                           }
+                       }
+          </select></td></tr>
+
+                    </table>
+                   <p>
+                         <input type="submit" value="Next" />
+                    </p>
+                }
+    </div>

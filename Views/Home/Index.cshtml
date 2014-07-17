@@ -1,0 +1,71 @@
+ @{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutResume.cshtml";
+}
+@section tabs{
+    <div id="topimagePan"><img src="~/Images/blank.gif" alt="" /></div>
+	<ul>
+		<li><a href="/Home/Index">Home</a></li>
+		<li><a href="/Home/AboutUs">About Us</a></li>
+		<li><a href="/Home/Gallery">Gallery</a></li>
+        <li><a href="/Home/ContactUs">Contact Us</a></li>
+       
+  </ul>
+}  
+@section login{
+    <div id="rightform4Pan">
+    <form action="/Home/VerifyUser" method="post" class="form1">
+		<h2>Member Login</h2>
+		<label>Email:</label>
+		<input name="Email" type="text" id="Email"/>
+		<label>Password:</label>
+		<input name="Password" type="password" id="Password"/><br />
+       <label>Type:</label> 
+        <p><select id="Type" name="Type">
+            <option id="none">please select</option>
+            <option id="user">User</option>
+            <option id="company">Company</option>
+        </select></p>
+        <a href="/Account/SignUp"><label class="label1">If not member? SignUp</label></a>
+        <input name="GO" type="submit" class="botton" id="GO" value="Login" />
+		
+	</form>
+        </div>
+}  
+@section TopJobs{
+    <div id="rightform4Pan">
+	    <h2>Top 5 jobs</h2> </div>
+	<ul>
+		<marquee direction="down">
+		<li><a href="/Home/TopJobs">Web Developer</a></li>
+		<li><a href="/Home/TopJobs">Web Content Writer</a></li>
+		<li><a href="/Home/TopJobs">SEO Expert </a></li>
+		<li><a href="/Home/TopJobs">Network Administrator </a></li>
+		<li><a href="/Home/TopJobs">HR Manager </a></li>
+            </marquee>
+	</ul>
+	
+} 
+<div id="leftPan">
+  	<h2>what is <span>Opportunity.com</span></h2><br />
+	<p>Opportunity.com is Pakistan's leading jobs site. It help jobseekers in finding the jobs
+         of their own choice, while providing a unique platform for employers to advertise different 
+         career opportunities available in their organization and receive resumes from the potential candidates online.</p>
+	<p>Opportunity.com is a leading jobs site of Pakistan with over 23,000 employers and more than 1 million active and engaged web users.
+         High standards and special concerns about consumer's privacy entitled Mustakbil.com for the seal of certification by TRUSTe - world 
+        leader in consumer privacy protection. </p>
+   
+    <div id="leftblocktwoPan">
+	</div>
+  </div>
+	@section Footer{
+    <div id="footerPan">
+	<ul>
+		<li><a href="/Home/Index">Home</a>|</li>
+		<li><a href="/Home/AboutUs">About Us</a>|</li>
+		<li><a href="/Home/Index">Categories</a>|</li>
+        <li><a href="/Home/ContactUs">Contact Us</a>|</li>
+		</ul>
+		<p class="copyright">©oportunity. all right reserved.</p>
+    </div>
+    }

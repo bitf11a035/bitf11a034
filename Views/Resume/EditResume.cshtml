@@ -1,0 +1,346 @@
+﻿@{
+    ViewBag.Title = "EditResume";
+    Layout = "~/Views/Shared/_LayoutResume.cshtml";
+}
+@section tabs{
+    <div id="topimagePan"><img src="~/Images/blank.gif" alt="" /></div>
+	<ul>
+		<li><a href="/User/Home">Home</a></li>
+		<li><a href="/Home/AboutUs">About Us</a></li>
+		<li><a href="/Home/Gallery">Gallery</a></li>
+        <li><a href="/Resume/ResumeManagement">Resume</a></li>
+        <li><a href="/Home/ContactUs">Contact Us</a></li>
+        <li><a href="/Account/Logout">Logout</a></li>
+       
+  </ul>
+}
+@section ResumeManagement{
+    <div id="rightform3Pan">
+	        <h2>Resume Management</h2>
+          <ul>
+           	<li><a href="/Resume/PersonalInformation">Personal Information</a></li>
+		    <li><a href="/Resume/Academics">Academics</a></li>
+		    <li><a href="/Resume/Experiences">Experiences</a></li>
+		    <li><a href="/Resume/Projects">Projects</a></li>
+		    <li><a href="/Resume/Languages">Languages</a></li>
+            <li><a href="/Resume/Skills">Skills</a></li>
+            <li><a href="/Resume/References">References</a></li>
+            <li><a href="/Resume/Honours">Honours and Awards</a></li>
+            <li><a href="/Resume/TargetJobs">Target Jobs</a></li>
+	</ul>
+
+	</div>
+}
+
+@model OnlineJobPortal.Models.PersonalInfo
+<div id="leftPan">
+		<h2>Personal <span>Information</span></h2>
+          @using (Html.BeginForm("UpdateInfo", "Resume", FormMethod.Post))
+          {
+               @Html.ValidationSummary(true)
+             <br /><br /><br />
+         @Html.HiddenFor(model => model.InfoID)      
+         <div class="editor-label">
+            @Html.LabelFor(model => model.UserId)
+        </div>
+         <div class="editor-field">
+           @Html.DisplayFor(model => model.UserId)
+        </div>     
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FatherName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FatherName)
+            @Html.ValidationMessageFor(model => model.FatherName)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CNIC)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CNIC)
+            @Html.ValidationMessageFor(model => model.CNIC)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Gender)
+        </div>
+        <div class="editor-field">
+           <select name="Gender">
+
+               @if(ViewBag.data==null)
+               {
+                     <option value="none">select gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+               }
+               @if(ViewBag.data!=null)
+               {
+                    if(Model.Gender.Equals("none"))
+                    {
+                        <option value="none">select gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    }
+                    if(Model.Gender.Equals("Male"))
+                    {
+                        <option value="Male" selected="selected">Male</option>
+                        <option value="Female">Female</option>
+                    }
+                    if(Model.Gender.Equals("Female"))
+                    {
+                        <option value="Male">Male</option>
+                        <option value="Female" selected="selected">Female</option>
+                    }
+               }
+            
+          </select>
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Martial_Status)
+        </div>
+        <div class="editor-field">
+           <select name="Martial_Status">
+                @if (ViewBag.data == null)
+                {
+                    <option value="none">select type</option>
+                   <option value="Married">Married</option>
+                   <option value="Single">Single</option>
+                }
+              @if (ViewBag.data != null)
+              {
+                   if(Model.Martial_Status.Equals("Married"))
+                   {
+                     <option value="Married" selected="selected">Married</option>
+                     <option value="Single">Single</option>
+                   }
+                   if (Model.Martial_Status.Equals("Single"))
+                   {
+                      <option value="Married">Married</option>
+                       <option value="Single" selected="selected">Single</option>
+                   }
+                   if(Model.Martial_Status.Equals("none"))
+                   {
+                        <option value="none">select type</option>
+                       <option value="Married">Married</option>
+                       <option value="Single">Single</option>
+                   }
+              }
+          </select>
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Country)
+        </div>
+        <div class="editor-field">
+           <select name="Country">
+               @if (ViewBag.data == null)
+               {
+                    <option value="none">select type</option>
+                    <option value="Pakistan">Pakistan</option>
+                    <option value="India">India</option>
+                    <option value="America">America</option>
+               }
+               @if (ViewBag.data != null)
+               {
+                   if (Model.Country.Equals("Pakistan"))
+                   {
+                     <option value="Pakistan" selected="selected">Pakistan</option>
+                     <option value="India">India</option>
+                     <option value="America">America</option>
+                   }
+                   if (Model.Country.Equals("India"))
+                   {
+                       <option value="Pakistan">Pakistan</option>
+                     <option value="India" selected="selected">India</option>
+                     <option value="America">America</option>
+                   }
+                    if (Model.Country.Equals("America"))
+                   {
+                       <option value="Pakistan">Pakistan</option>
+                     <option value="India" >India</option>
+                     <option value="America" selected="selected">America</option>
+                   }
+                   if(Model.Country.Equals("none"))
+                   {
+                        <option value="none">select type</option>
+                        <option value="Pakistan">Pakistan</option>
+                        <option value="India">India</option>
+                        <option value="America">America</option>
+                   }
+               }
+          </select>
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.City)
+        </div>
+        <div class="editor-field">
+           <select name="City">
+                @if (ViewBag.data == null)
+                {
+                    <option value="none">select type</option>
+                    <option value="Lahore">Lahore</option>
+                    <option value="karachi">karachi</option>
+                    <option value="Islamabad">Islamabad</option>
+                }
+                @if (ViewBag.data != null)
+                {
+                       if (Model.City.Equals("Lahore"))
+                       {
+                         <option value="Lahore" selected="selected">Lahore</option>
+                         <option value="karachi">karachi</option>
+                         <option value="Islamabad">Islamabad</option>
+                       }
+                       if (Model.City.Equals("karachi"))
+                       {
+                           <option value="Lahore">Lahore</option>
+                         <option value="karachi" selected="selected">karachi</option>
+                         <option value="Islamabad">Islamabad</option>
+                       }
+                       if (Model.City.Equals("Islamabad"))
+                       {
+                           <option value="Lahore">Lahore</option>
+                         <option value="karachi" >karachi</option>
+                         <option value="Islamabad" selected="selected">Islamabad</option>
+                       }
+                       if(Model.City.Equals("none"))
+                       {
+                            <option value="none">select type</option>
+                            <option value="Lahore">Lahore</option>
+                            <option value="karachi">karachi</option>
+                            <option value="Islamabad">Islamabad</option>
+                       }
+                }
+            
+          </select>
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Industry)
+        </div>
+        <div class="editor-field">
+           <select name="Industry">
+                @if (ViewBag.data == null)
+                {
+                    <option value="none">select type</option>
+                    <option value="IT">IT</option>
+                    <option value="Medical">Medical</option>
+                    <option value="Law">Law</option>
+                }
+               @if (ViewBag.data != null)
+               {
+                   if (Model.Industry.Equals("IT"))
+                   {
+                     <option value="IT" selected="selected">IT</option>
+                     <option value="Medical">Medical</option>
+                     <option value="Law">Law</option>
+                   }
+                   if (Model.Industry.Equals("Medical"))
+                   {
+                       <option value="IT">IT</option>
+                     <option value="Medical" selected="selected">Medical</option>
+                     <option value="Law">Law</option>
+                   }
+                   if (Model.Industry.Equals("Law"))
+                   {
+                       <option value="IT">IT</option>
+                     <option value="Medical" >Medical</option>
+                     <option value="Law" selected="selected">Law</option>
+                   }
+                   if(Model.Industry.Equals("none"))
+                   {
+                        <option value="none">select type</option>
+                        <option value="IT">IT</option>
+                        <option value="Medical">Medical</option>
+                        <option value="Law">Law</option>
+                   }
+               }
+            
+          </select>
+        </div>
+         <div class="editor-label">
+            @Html.LabelFor(model => model.ExperienceLevel)
+        </div>
+        <div class="editor-field">
+           <select name="ExperienceLevel">
+               @if (ViewBag.data == null)
+               {
+                   <option value="none">select type</option>
+                    <option value="Student">Student</option>
+                    <option value="1 year">1 year</option>
+                   <option value="more than 1 year">more than 1 year</option>
+               }
+               @if (ViewBag.data != null)
+               {
+                   if (Model.ExperienceLevel.Equals("Student"))
+                   {
+                     <option value="Student" selected="selected">Student</option>
+                     <option value="1 year">1 year</option>
+                     <option value="more than 1 year">more than 1 year</option>
+                   }
+                   if (Model.ExperienceLevel.Equals("1 year"))
+                   {
+                       <option value="Student">Student</option>
+                     <option value="1 year" selected="selected">1 year</option>
+                     <option value="more than 1 year">more than 1 year</option>
+                   }
+                   if (Model.ExperienceLevel.Equals("more than 1 year"))
+                   {
+                       <option value="Student">Student</option>
+                     <option value="1 year" >1 year</option>
+                     <option value="more than 1 year" selected="selected">more than 1 year</option>
+                   }
+                   if(Model.ExperienceLevel.Equals("none"))
+                   {
+                        <option value="none">select type</option>
+                        <option value="Student">Student</option>
+                        <option value="1 year">1 year</option>
+                        <option value="more than 1 year">more than 1 year</option>
+                   }
+               }
+            
+          </select>
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DOB)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DOB)
+            @Html.ValidationMessageFor(model => model.DOB)
+        </div>
+         <div class="editor-label">
+            @Html.LabelFor(model => model.EmailAddress)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.EmailAddress)
+            @Html.ValidationMessageFor(model => model.EmailAddress)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Phoneno)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Phoneno)
+            @Html.ValidationMessageFor(model => model.Phoneno)
+        </div>
+         <div class="editor-label">
+            @Html.LabelFor(model => model.Address)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Address)
+            @Html.ValidationMessageFor(model => model.Address)
+        </div>
+         <div class="editor-label">
+            @Html.LabelFor(model => model.ProfessionalSummary)
+        </div>
+        <div class="editor-field">
+            @Html.TextAreaFor(model => model.ProfessionalSummary)
+        </div>
+        <p>
+            <input type="submit" value="Next" />
+        </p>
+          }
+		
+  </div>

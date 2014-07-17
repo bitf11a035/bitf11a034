@@ -1,0 +1,244 @@
+﻿@{
+    ViewBag.Title = "Honours";
+    Layout = "~/Views/Shared/_LayoutResume.cshtml";
+}
+@section tabs{
+    <div id="topimagePan"><img src="~/Images/blank.gif" alt="" /></div>
+	<ul>
+		<li><a href="/User/Home">Home</a></li>
+		<li><a href="/Home/AboutUs">About Us</a></li>
+		<li><a href="/Home/Gallery">Gallery</a></li>
+        <li><a href="/Resume/ResumeManagement">Resume</a></li>
+        <li><a href="/Home/ContactUs">Contact Us</a></li>
+        <li><a href="/Account/Logout">Logout</a></li>
+       
+  </ul>
+}
+@section ResumeManagement{
+    <div id="rightform3Pan">
+	        <h2>Resume Management</h2>
+          <ul>
+           	<li><a href="/Resume/PersonalInformation">Personal Information</a></li>
+		    <li><a href="/Resume/Academics">Academics</a></li>
+		    <li><a href="/Resume/Experiences">Experiences</a></li>
+		    <li><a href="/Resume/Projects">Projects</a></li>
+		    <li><a href="/Resume/Languages">Languages</a></li>
+            <li><a href="/Resume/Skills">Skills</a></li>
+            <li><a href="/Resume/References">References</a></li>
+            <li><a href="/Resume/Honours">Honours and Awards</a></li>
+            <li><a href="/Resume/TargetJobs">Target Jobs</a></li>
+	</ul>
+
+	</div>
+}
+
+@model OnlineJobPortal.Models.Honour
+
+    <div id="leftPan">
+        <h2>Hono<span>urs</span></h2>
+        @using (Html.BeginForm("UpdateHonour", "Resume", FormMethod.Post))
+        {
+                   @Html.ValidationSummary(true)
+                  <br /><br /><br /><br /><br />
+                     @Html.HiddenFor(model => model.HonourID)
+                     @Html.HiddenFor(model => model.UserID)
+           <table border="0">
+
+                <tr><td>@Html.LabelFor(model => model.Type)</td>
+                 <td><select name="Type">
+                @if (ViewBag.Type == null)
+                {
+                   <option >please select</option>
+                   <option value="Academic">Academic</option>
+                   <option value="Professional">Professional</option>
+                   <option value="Extracurricular">Extracurricular</option>
+                }
+                @if (ViewBag.Type != null)
+                {
+                    if (Model.Type.Equals("Academic"))
+                       {
+                         <option value="Academic" selected="selected">Academic</option>
+                        <option value="Professional">Professional</option>
+                        <option value="Extracurricular">Extracurricular</option>
+                       }
+                    if (Model.Type.Equals("Professional"))
+                       {
+                           <option value="Academic">Academic</option>
+                           <option value="Professional" selected="selected">Professional</option>
+                           <option value="Extracurricular">Extracurricular</option>
+                       }
+                    if (Model.Type.Equals("Extracurricular"))
+                       {
+                          <option value="Academic">Academic</option>
+                           <option value="Professional">Professional</option>
+                           <option value="Extracurricular" selected="selected">Extracurricular</option>
+                       }
+                    if (Model.Type.Equals("none"))
+                       {
+                            <option >please select</option>
+                           <option value="Academic">Academic</option>
+                           <option value="Professional">Professional</option>
+                           <option value="Extracurricular">Extracurricular</option>
+                       }
+                }
+            
+          </select></td></tr>
+
+
+                <tr><td>@Html.LabelFor(model => model.Award_Title)</td>
+                      <td>@Html.TextBoxFor(model => model.Award_Title)</td>
+                      <td>@Html.ValidationMessageFor(model => model.Award_Title)</td></tr>
+
+               <tr><td>@Html.LabelFor(model => model.Issuer)</td>
+                      <td>@Html.TextBoxFor(model => model.Issuer)</td>
+                      <td>@Html.ValidationMessageFor(model => model.Issuer)</td></tr>
+
+               
+                <tr>
+                   <td>@Html.LabelFor(model => model.Country)</td>
+                   <td><select name="Country">
+               @if (ViewBag.data == null)
+               {
+                    <option value="none">select type</option>
+                    <option value="Pakistan">Pakistan</option>
+                    <option value="India">India</option>
+                    <option value="America">America</option>
+               }
+               @if (ViewBag.data != null)
+               {
+                   if (Model.Country.Equals("Pakistan"))
+                   {
+                     <option value="Pakistan" selected="selected">Pakistan</option>
+                     <option value="India">India</option>
+                     <option value="America">America</option>
+                   }
+                   if (Model.Country.Equals("India"))
+                   {
+                       <option value="Pakistan">Pakistan</option>
+                     <option value="India" selected="selected">India</option>
+                     <option value="America">America</option>
+                   }
+                    if (Model.Country.Equals("America"))
+                   {
+                       <option value="Pakistan">Pakistan</option>
+                     <option value="India" >India</option>
+                     <option value="America" selected="selected">America</option>
+                   }
+                   if(Model.Country.Equals("none"))
+                   {
+                        <option value="none">select type</option>
+                        <option value="Pakistan">Pakistan</option>
+                        <option value="India">India</option>
+                        <option value="America">America</option>
+                   }
+               }
+          </select></td></tr>
+
+               <tr><td>@Html.LabelFor(model => model.City)</td>
+                 <td><select name="City">
+                @if (ViewBag.data == null)
+                {
+                    <option value="none">select type</option>
+                    <option value="Lahore">Lahore</option>
+                    <option value="karachi">karachi</option>
+                    <option value="Islamabad">Islamabad</option>
+                }
+                @if (ViewBag.data != null)
+                {
+                       if (Model.City.Equals("Lahore"))
+                       {
+                         <option value="Lahore" selected="selected">Lahore</option>
+                         <option value="karachi">karachi</option>
+                         <option value="Islamabad">Islamabad</option>
+                       }
+                       if (Model.City.Equals("karachi"))
+                       {
+                           <option value="Lahore">Lahore</option>
+                         <option value="karachi" selected="selected">karachi</option>
+                         <option value="Islamabad">Islamabad</option>
+                       }
+                       if (Model.City.Equals("Islamabad"))
+                       {
+                           <option value="Lahore">Lahore</option>
+                         <option value="karachi" >karachi</option>
+                         <option value="Islamabad" selected="selected">Islamabad</option>
+                       }
+                       if(Model.City.Equals("none"))
+                       {
+                            <option value="none">select type</option>
+                            <option value="Lahore">Lahore</option>
+                            <option value="karachi">karachi</option>
+                            <option value="Islamabad">Islamabad</option>
+                       }
+                }
+            
+          </select></td></tr>
+
+                <tr><td>@Html.LabelFor(model => model.Province)</td>
+                 <td><select name="Province">
+                @if (ViewBag.data == null)
+                {
+                   <option >Select Province</option>
+                   <option value="Punjab">Punjab</option>
+                   <option value="Sindh">Sindh</option>
+                   <option value="KhyberPakhtunkhwa">KhyberPakhtunkhwa</option>
+                   <option value="Balochistan">Balochistan</option>
+                }
+                @if (ViewBag.data != null)
+                {
+                       if (Model.Province.Equals("Punjab"))
+                       {
+                         <option value="Punjab" selected="selected">Punjab</option>
+                        <option value="Sindh">Sindh</option>
+                        <option value="KhyberPakhtunkhwa">KhyberPakhtunkhwa</option>
+                        <option value="Balochistan">Balochistan</option>
+                       }
+                       if (Model.Province.Equals("Sindh"))
+                       {
+                           <option value="Punjab">Punjab</option>
+                           <option value="Sindh" selected="selected">Sindh</option>
+                           <option value="KhyberPakhtunkhwa">KhyberPakhtunkhwa</option>
+                           <option value="Balochistan">Balochistan</option>
+                       }
+                       if (Model.Province.Equals("KhyberPakhtunkhwa"))
+                       {
+                           <option value="Punjab">Punjab</option>
+                           <option value="Sindh">Sindh</option>
+                           <option value="KhyberPakhtunkhwa" selected="selected">KhyberPakhtunkhwa</option>
+                           <option value="Balochistan">Balochistan</option>
+                       }
+                       if (Model.Province.Equals("Balochistan"))
+                       {
+                           <option value="Punjab">Punjab</option>
+                           <option value="Sindh">Sindh</option>
+                           <option value="KhyberPakhtunkhwa">KhyberPakhtunkhwa</option>
+                           <option value="Balochistan" selected="selected">Balochistan</option>
+                       }
+                        if (Model.Province.Equals("none"))
+                       {
+                            <option >Select Province</option>
+                           <option value="Punjab">Punjab</option>
+                           <option value="Sindh">Sindh</option>
+                           <option value="KhyberPakhtunkhwa">KhyberPakhtunkhwa</option>
+                           <option value="Balochistan">Balochistan</option>
+                       }
+                }
+            
+          </select></td></tr>
+             
+               <tr><td>@Html.LabelFor(model => model.Date)</td>
+                      <td>@Html.TextBoxFor(model => model.Date)</td>
+                      <td>@Html.ValidationMessageFor(model => model.Date)</td></tr>
+
+                <tr><td>@Html.LabelFor(model => model.Awards_Details)</td>
+                      <td>@Html.TextBoxFor(model => model.Awards_Details)</td>
+                      <td>@Html.ValidationMessageFor(model => model.Awards_Details)</td></tr>
+              
+                    </table>
+                   <p>
+                         <input type="submit" value="Next" />
+                    </p>
+                }
+ 
+
+    </div>

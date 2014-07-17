@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <title>Opportunity.com</title>
+    <link href="~/Content/style.css" rel="stylesheet" type="text/css" />
+        
+</head>
+
+<body>
+<div id="topPan">
+	<a href="Index.cshtml"><img src="~/Images/logo.gif" title="Brain Tech" alt="Brain Tech" width="219" height="58" border="0"  class="logo"/></a>
+	
+    <div id="topimagePan"><img src="~/Images/blank.gif" alt="" /></div>
+	<ul>
+		<li><a href="/Home/Index">Home</a></li>
+		<li><a href="/Home/AboutUs">About Us</a></li>
+		<li><a href="/Home/Gallery">Gallery</a></li>
+        <li><a href="/Home/ContactUs">Contact Us</a></li>
+  </ul>
+</div>
+      	@model OnlineJobPortal.Models.User
+<div id="bodyPan">
+  <div id="leftPan">
+       @using (Html.BeginForm("AddUser", "Account", FormMethod.Post))
+        {
+           @Html.ValidationSummary(true)
+          <br /><br /><br /><br /><br />
+          <p><img src="~/Images/signup.gif" alt=""/></p>
+            <table border="0">
+          <tr><td>@Html.LabelFor(model => model.Name)</td>
+              <td>@Html.EditorFor(model => model.Name)</td>
+              <td>@Html.ValidationMessageFor(model => model.Name)</td></tr>
+
+          <tr><td>@Html.LabelFor(model => model.Email)</td>
+              <td>@Html.TextBoxFor(model => model.Email,new { id = "Email",name="Email" })</td>
+              <td>@Html.ValidationMessageFor(model => model.Email)</td>
+              @*<td><input type="button" id="b1" name="check" value="check"/></td> <td><div id="result"></div></td>*@</tr>
+
+          <tr><td>@Html.LabelFor(model => model.Password)</td>
+              <td>@Html.PasswordFor(model => model.Password,new { id = "Password",name="Password" })</td>
+               <td>@Html.ValidationMessageFor(model => model.Password)</td></tr>
+
+          <tr><td>@Html.LabelFor(model => model.Confirm_Password)</td>
+              <td>@Html.PasswordFor(model => model.Confirm_Password,new { id = "Confirm_Password",name="Confirm_Password" })</td>
+               <td>@Html.ValidationMessageFor(model => model.Confirm_Password)</td></tr>
+
+          <tr><td>@Html.LabelFor(model => model.Address)</td>
+              <td>@Html.TextBoxFor(model => model.Address,new { id = "Address",name="Address" })</td></tr>
+
+          <tr><td>@Html.LabelFor(model => model.PhoneNo)</td>
+              <td>@Html.TextBoxFor(model => model.PhoneNo,new { id = "PhoneNo",name="PhoneNo" })</td>
+               <td>@Html.ValidationMessageFor(model => model.PhoneNo)</td></tr>
+
+          <tr><td>@Html.LabelFor(model => model.Type)</td>
+              <td><select id="Type" name="Type">
+                    <option value="none">Select Type</option>
+                    <option id="User">User</option>
+                    <option id="Company">Company</option>
+                  </select></td>
+               <td>@Html.ValidationMessageFor(model => model.Type)</td></tr>
+
+           <tr><td>@Html.LabelFor(model => model.Country)</td>
+               <td><select id="country" name="country">
+                   <option >Select Country</option>
+                   <option id="pak">Pakistan</option>
+                   <option id="india">India</option>
+                   <option id="america">America</option>
+              </select></td></tr>
+
+            </table>@* comment  javascript ko debugging karny k leye.. console.log("inside click")*@
+          <p><input type="submit" name="Proceed" value="SignUp"/></p>
+        }
+        
+        @*<div id="checking"><h3>Checking...</h3></div>
+    @Scripts.Render("~/bundles/jquery")
+  <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $('#checking').hide();
+
+            $('#b1').click(function () {
+
+                var userName = $('#Email').val();
+
+                alert('Email ID='+ userName);
+                $('#checking').show();
+                $.getJSON("/Account/CheckUserName?Email=" + userName, function (data)
+                {
+                    $('#checking').hide();
+                    if (data) {
+                        $('#result').text("User already exists in database.. Try another one!");
+                        //alert('User already exists in database.. Try another one!');
+
+                    }
+                    else {
+                        $('#result').text("User Name is available!");
+                        //alert('User Name is available!');
+                    }
+                });
+
+            });
+
+        });
+    </script>*@
+  </div>
+    </div>
+
+
+
+  <div id="rightPan">
+      <div id="rightform2Pan">
+          <form action="/Home/Search1" method="post" class="form2">
+		<h2>Search Here</h2>
+		<p><input name="search1" type="text" /></p>
+		<input name="search" type="submit"  class="search" id="search" value="SEARCH"/>
+	</form>
+	
+	</div>
+  	
+      <br />
+	<div id="rightform4Pan">
+	    <h2>Top 5 jobs</h2> </div>
+	<ul>
+		<li><a href="#">Web Developer</a></li>
+		<li><a href="#">Web Content Writer</a></li>
+		<li><a href="#">SEO Expert </a></li>
+		<li><a href="#">Network Administrator </a></li>
+		<li><a href="#">HR Manager </a></li>
+	</ul>
+	
+  </div> <!-- bodypan div end-->
+<div id="bodyBottomPan">
+  <div id="BottomLeftPan">
+  	
+  </div>
+ 
+</div>
+<div id="footerPan">
+	<ul>
+		<li><a href="#">Home </a>| </li>
+		<li><a href="#">About Us</a>| </li>
+		<li><a href="#">Gallery</a>| </li>
+		<li><a href="#">Contact Us</a></li>
+		</ul>
+		<p class="copyright">©Opportunity. all right reserved.</p>
+    </div>
+		
+</body>
+    @section Scripts {
+    @Scripts.Render("~/bundles/jqueryval") }
+</html>
+
+ 
+
+
+@*<h2>what is <span>Opportunity.com</span></h2><br />
+	<p>Opportunity.com is Pakistan's leading jobs site. It help jobseekers in finding the jobs
+         of their own choice, while providing a unique platform for employers to advertise different 
+         career opportunities available in their organization and receive resumes from the potential candidates online.</p>
+	<p>Opportunity.com is a leading jobs site of Pakistan with over 23,000 employers and more than 1 million active and engaged web users.
+         High standards and special concerns about consumer's privacy entitled Mustakbil.com for the seal of certification by TRUSTe - world 
+        leader in consumer privacy protection. </p>*@

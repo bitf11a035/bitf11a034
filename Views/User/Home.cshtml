@@ -1,0 +1,127 @@
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_LayoutResume.cshtml";
+}
+@section tabs{
+    <div id="topimagePan"><img src="~/Images/blank.gif" alt="" /></div>
+	<ul>
+		<li><a href="/User/Home">Home</a></li>
+        <li><a href="/Home/AboutUs">About Us</a></li>
+		<li><a href="/Home/Gallery">Gallery</a></li>
+        <li><a href="/Resume/ResumeManagement">Resume</a></li>
+        <li><a href="/User/ApplyResult1">Applied Jobs</a></li>
+        <li><a href="/Account/Logout">Logout</a></li>
+       
+  </ul>
+}
+@section ResumeManagement{
+    <div id="rightform3Pan">
+	        <h2>Categories</h2>
+          <ul>
+           	<li><a href="/User/Admin_Jobs">Admin</a></li>
+		    <li><a href="/User/Marketing_Jobs">Marketing</a></li>
+		    <li><a href="/User/IT_Jobs">IT</a></li>
+		    <li><a href="/User/HR_Jobs">HR</a></li>
+            <li><a href="/User/Accounting_Jobs">Accounting</a></li>
+	</ul>
+
+	</div>
+}  
+@section TopJobs{
+    <div id="rightform4Pan">
+	    <h2>Top 5 jobs</h2> </div>
+	<ul>
+		<marquee direction="down">
+		<li><a href="/Home/TopJobs">Web Developer</a></li>
+		<li><a href="/Home/TopJobs">Web Content Writer</a></li>
+		<li><a href="/Home/TopJobs">SEO Expert </a></li>
+		<li><a href="/Home/TopJobs">Network Administrator </a></li>
+		<li><a href="/Home/TopJobs">HR Manager </a></li>
+            </marquee>
+	</ul>
+	
+}
+@section search{
+     <div id="rightform2Pan">
+	<form action="/Home/Search1" method="post" class="form2">
+		<h2>Search Here</h2>
+		<p><input name="search" type="text"/></p>
+		<input type="submit"  class="search" value="SEARCH"/>
+	</form>
+
+   
+  @Scripts.Render("~/bundles/jquery")
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $('#searching').hide();
+
+            $('#b1').click(function () {
+
+                var search1 = $('#search').val();
+
+                alert('Text=' + search1);
+                $('#searching').show();
+                $.getJSON("/Home/Search?search=" + search1, function (data) {
+                    $('#searching').hide();
+                    if (data) {
+                        $('#result').text("Job Category exits.");
+                        //alert('User already exists in database.. Try another one!');
+
+                    }
+                    else {
+                        $('#result').text("Job Category doesnot exist.");
+                        //alert('User Name is available!');
+                    }
+                });
+
+            });
+
+        });
+    </script>
+
+} 
+ @model OnlineJobPortal.Models.Job
+  <div id="leftPan">
+  	<h2>what is <span>Opportunity.com</span></h2><br />
+	<p>Opportunity.com is Pakistan's leading jobs site. It help jobseekers in finding the jobs
+         of their own choice, while providing a unique platform for employers to advertise different 
+         career opportunities available in their organization and receive resumes from the potential candidates online.</p>
+	<p>Opportunity.com is a leading jobs site of Pakistan with over 23,000 employers and more than 1 million active and engaged web users.
+         High standards and special concerns about consumer's privacy entitled Mustakbil.com for the seal of certification by TRUSTe - world 
+        leader in consumer privacy protection. </p>
+
+   <h2>Latest Jobs <span>in Pakistan</span></h2><br />
+    <div id="leftblockonePan">
+	
+		@foreach (var job in ViewBag.jobsData)
+        {
+         
+		<h4><span>-</span> @job.JobName</h4>
+		<p>@job.JobDescription</p>
+        <div id="leftblockoneLinkPan">
+			<ul>
+                <li class="comments"></li>  
+				<li class="more">@Html.ActionLink("details", "Job_Detail", new { id=@job.JobID })</li>
+			</ul>
+		</div>
+        <p class="border"><img src="~/Images/blank.gif" alt="" /></p>
+     }
+    </div>
+    <div id="leftblocktwoPan">   
+  </div>
+      </div>
+ @section Footer{
+    <div id="footerPan">
+	<ul>
+		<li><a href="/Home/Index">Home</a>|</li>
+		<li><a href="/Home/AboutUs">About Us</a>|</li>
+		<li><a href="/Home/Categories">Categories</a>|</li>
+        <li><a href="/Resume/ResumeManagement">Resume</a>|</li>
+        <li><a href="/Home/ContactUs">Contact Us</a>|</li>
+        <li><a href="/Home/Index">Logout</a></li>
+		</ul>
+		<p class="copyright">©oportunity. all right reserved.</p>
+    </div>
+    }

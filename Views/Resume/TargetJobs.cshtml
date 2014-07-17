@@ -1,0 +1,59 @@
+﻿@{
+    ViewBag.Title = "TargetJobs";
+    Layout = "~/Views/Shared/_LayoutResume.cshtml";
+}
+@section tabs{
+    <div id="topimagePan"><img src="~/Images/blank.gif" alt="" /></div>
+	<ul>
+		<li><a href="/User/Home">Home</a></li>
+		<li><a href="/Home/AboutUs">About Us</a></li>
+		<li><a href="/Home/Gallery">Gallery</a></li>
+        <li><a href="/Resume/ResumeManagement">Resume</a></li>
+        <li><a href="/Home/ContactUs">Contact Us</a></li>
+        <li><a href="/Account/Logout">Logout</a></li>
+       
+  </ul>
+}
+@section ResumeManagement{
+    <div id="rightform3Pan">
+	        <h2>Resume Management</h2>
+          <ul>
+           	<li><a href="/Resume/PersonalInformation">Personal Information</a></li>
+		    <li><a href="/Resume/Academics">Academics</a></li>
+		    <li><a href="/Resume/Experiences">Experiences</a></li>
+		    <li><a href="/Resume/Projects">Projects</a></li>
+		    <li><a href="/Resume/Languages">Languages</a></li>
+            <li><a href="/Resume/Skills">Skills</a></li>
+            <li><a href="/Resume/References">References</a></li>
+            <li><a href="/Resume/Honours">Honours and Awards</a></li>
+            <li><a href="/Resume/TargetJobs">Target Jobs</a></li>
+	</ul>
+
+	</div>
+}
+
+@model OnlineJobPortal.Models.TargetJob
+
+    <div id="leftPan">
+        <h2>Target <span>Job</span></h2>
+        @using (Html.BeginForm("UpdateTargetJob", "Resume", FormMethod.Post))
+        {
+                   @Html.ValidationSummary(true)
+                  <br /><br /><br /><br /><br />
+                     @Html.HiddenFor(model => model.TargetJobID)
+                     @Html.HiddenFor(model => model.UserID)
+           <table border="0">
+                <tr><td>@Html.LabelFor(model => model.JobTitle)</td>
+                      <td>@Html.TextBoxFor(model => model.JobTitle)</td>
+                      <td>@Html.ValidationMessageFor(model => model.JobTitle)</td></tr>
+              
+                    </table>
+                   <p>
+                         <input type="submit" value="Next" />
+                    </p>
+                }
+ 
+
+    </div>
+
+

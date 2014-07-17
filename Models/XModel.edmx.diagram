@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f734fdd3be454541a90e69aec52ad8bd" Name="Diagram1">
+        <EntityTypeShape EntityType="JobPortalModel.Academic" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="JobPortalModel.ApplyforJob" Width="1.5" PointX="5.25" PointY="21.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="JobPortalModel.Category" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="JobPortalModel.Experience" Width="1.5" PointX="3" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="JobPortalModel.Gallery" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="JobPortalModel.Honour" Width="1.5" PointX="3" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="JobPortalModel.Job" Width="1.5" PointX="3" PointY="19.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="JobPortalModel.Language" Width="1.5" PointX="3" PointY="24" IsExpanded="true" />
+        <EntityTypeShape EntityType="JobPortalModel.PersonalInfo" Width="1.5" PointX="3" PointY="26.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="JobPortalModel.Project" Width="1.5" PointX="3" PointY="31.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="JobPortalModel.Reference" Width="1.5" PointX="3" PointY="36.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="JobPortalModel.Skill" Width="1.5" PointX="3" PointY="40.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="JobPortalModel.Table" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="JobPortalModel.TargetJob" Width="1.5" PointX="3" PointY="43.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="JobPortalModel.User" Width="1.5" PointX="0.75" PointY="20.75" IsExpanded="true" />
+        <AssociationConnector Association="JobPortalModel.FK_Academics_ToTable" ManuallyRouted="false" />
+        <AssociationConnector Association="JobPortalModel.FK_ApplyforJob_ToTable" ManuallyRouted="false" />
+        <AssociationConnector Association="JobPortalModel.FK_ApplyforJob_ToTable_1" ManuallyRouted="false" />
+        <AssociationConnector Association="JobPortalModel.FK_Experiences_ToTable" ManuallyRouted="false" />
+        <AssociationConnector Association="JobPortalModel.FK_Honours_ToTable" ManuallyRouted="false" />
+        <AssociationConnector Association="JobPortalModel.FK_Job_ToTable_1" ManuallyRouted="false" />
+        <AssociationConnector Association="JobPortalModel.FK_Languages_ToTable" ManuallyRouted="false" />
+        <AssociationConnector Association="JobPortalModel.FK_PersonalInfo_ToTable" ManuallyRouted="false" />
+        <AssociationConnector Association="JobPortalModel.FK_Projects_ToTable" ManuallyRouted="false" />
+        <AssociationConnector Association="JobPortalModel.FK_References_ToTable" ManuallyRouted="false" />
+        <AssociationConnector Association="JobPortalModel.FK_Skills_ToTable" ManuallyRouted="false" />
+        <AssociationConnector Association="JobPortalModel.FK_TargetJobs_ToTable" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
